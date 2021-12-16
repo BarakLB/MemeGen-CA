@@ -38,7 +38,7 @@
                 <canvas class="canvas"></canvas>
             </div>
             <div class="editor flex align-center">
-                <input class="text-line" type="text" placeholder="I Love Falafel"
+                <input class="text-line" type="text" placeholder="Add Text Here"
                     oninput="setLineTxt(this.value)">
                 <div class="buttons-row-1">
                     <button class="icon-btn" onclick="onAddLine()" data-name="Add Line">
@@ -84,7 +84,13 @@
                 </button>
             </div>
         </div>
-                <div class="buttons-row-4 flex justify-center">
+            <div class="stickers">
+                <img class="sticker" src="img/STICKERS/lonely.png" onclick="selectSticker(this)" alt="">
+                <img class="sticker" src="img/STICKERS/patrick.png" onclick="selectSticker(this)" alt="">
+                <img class="sticker" src="img/STICKERS/pikachu.png" onclick="selectSticker(this)" alt="">
+                <img class="sticker" src="img/STICKERS/turtle.png" onclick="selectSticker(this)" alt="">
+            </div>
+                <div class="buttons-row-4 flex">
                     <button class="save-btn" onclick="onSaveMeme()" data-name="Save Meme">
                         Save Meme
                     </button>
@@ -106,7 +112,7 @@
 
 
         <div class="saved-memes-gallery gallery flex align-center">
-            <div class="saved-container">
+            <div class="saved-container hide">
 
             </div>
 

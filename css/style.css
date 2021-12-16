@@ -11,9 +11,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #3e4b68f3;
-    background-image: url('/img/backGround.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('/img/backGround.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: poppins;
 }
 
@@ -92,7 +92,6 @@ body {
   border-radius: 0.8rem;
 }
 
-
 button {
   border: none;
   cursor: pointer;
@@ -113,27 +112,41 @@ button {
 }
 
 .buttons-row-1 .icon-btn:nth-child(1) {
-  background: rgb(0,255,46);
-background: linear-gradient(180deg, rgba(0,255,46,1) 0%, rgba(134,251,69,1) 50%, rgba(0,255,46,1) 100%);
+  background: rgb(0, 255, 46);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 46, 1) 0%,
+    rgba(134, 251, 69, 1) 50%,
+    rgba(0, 255, 46, 1) 100%
+  );
 }
 .buttons-row-1 .icon-btn:nth-child(2) {
-  background: rgb(255,0,0);
-  background: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgb(255, 77, 77) 50%, rgba(255,0,0,1) 100%);
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgb(255, 77, 77) 50%,
+    rgba(255, 0, 0, 1) 100%
+  );
 }
-.buttons-row-1 .icon-btn:nth-child(3) ,
-.buttons-row-1 .icon-btn:nth-child(4) ,
+.buttons-row-1 .icon-btn:nth-child(3),
+.buttons-row-1 .icon-btn:nth-child(4),
 .buttons-row-1 .icon-btn:nth-child(5) {
-  background: rgb(69,198,251);
-  background: linear-gradient(180deg, rgba(69,198,251,1) 0%, rgba(69,232,251,1) 50%, rgba(69,198,251,1) 100%);
+  background: rgb(69, 198, 251);
+  background: linear-gradient(
+    180deg,
+    rgba(69, 198, 251, 1) 0%,
+    rgba(69, 232, 251, 1) 50%,
+    rgba(69, 198, 251, 1) 100%
+  );
 }
 .buttons-row-2 {
   flex-wrap: wrap;
-  
 }
 
 .buttons-row-2-container {
   background: linear-gradient(0.25turn, #4f89c0, #37a870);
-  
+
   padding: 0.7rem;
   width: 75%;
   border-radius: 15px;
@@ -143,6 +156,38 @@ background: linear-gradient(180deg, rgba(0,255,46,1) 0%, rgba(134,251,69,1) 50%,
   border-radius: 20px;
   flex-wrap: wrap;
 }
+
+.stickers {
+  background-color: rgba(162, 167, 180, 0.644);
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+.stickers img {
+  z-index: 10;
+  width: 60px;
+  cursor: pointer;
+}
+
+.buttons-row-4 button {
+  flex-direction: column;
+  margin-left: 10px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgb(248, 158, 197) 0%,
+    rgb(195, 0, 255) 100%
+  );
+color: #fafafa;
+box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+padding: 10px;
+font-size: 1.2rem;
+}
+
+.download-btn a {
+  text-decoration: none;
+  color: #fafafa;
+}
+
 
 /* HELPERS */
 .clean-list {
