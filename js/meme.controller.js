@@ -79,13 +79,11 @@ function drawRect(selectedLine) {
 //BUTTONS FUNCS
 function onDownloadMeme(elLink) {
   onSaveMeme();
-  // gSavedMemes = loadFromStorage('SavedNum');
   var canvas = getgCanvas();
   var memeURL = canvas.toDataURL();
   elLink.href = memeURL;
   elLink.download = `meme-#${gSavedMemes}`;
   console.log('memeURL:', memeURL);
-
 }
 
 function onSaveMeme() {
@@ -97,8 +95,9 @@ function onSaveMeme() {
 
   renderMeme();
   var canvas = getgCanvas();
-  var memeURL = canvas.toDataURL();
-  saveToStorage(`meme-#${gSavedMemes}`, [gMeme, memeURL]);
+  var url = canvas.toDataURL();
+  
+  saveToStorage(`meme-#${gSavedMemes}`, {gMeme, url});
   saveToStorage('SavedNum', gSavedMemes);
 }
 
@@ -142,20 +141,18 @@ function setAlign(direction) {
   switch ((meme.lines[meme.selectedLineIdx].align = direction)) {
     case 'start': {
       meme.lines[meme.selectedLineIdx].x = 40;
-      renderMeme();
       break;
     }
     case 'center': {
       meme.lines[meme.selectedLineIdx].x = gCanvas.width / 2;
-      renderMeme();
       break;
     }
     case 'end': {
       meme.lines[meme.selectedLineIdx].x = gCanvas.width - 40;
-      renderMeme();
       break;
     }
   }
+  renderMeme();
 }
 
 function moveLinebyBtns(delta) {
@@ -181,11 +178,14 @@ function onChangeFontSize(delta) {
 function openEditor() {
   var elContain = document.querySelector('.editor-container');
   elContain.classList.remove('hide');
+  var elContain = document.querySelector('.saved-container');
+  elContain.classList.add('hide');
   elContain = document.querySelector('.imgs-container');
   elContain.classList.add('hide');
-  // onImgSelect()
+  // renderMeme()
 }
 
 function getgCanvas() {
   return gCanvas;
 }
+

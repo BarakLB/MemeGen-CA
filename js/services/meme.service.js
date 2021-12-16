@@ -14,10 +14,10 @@ function updateMeme(elImg) {
     lines: [
       {
         id: gLineId,
-        txt: 'I Love Falafel',
+        txt: 'Add Text Here',
         size: 20,
         align: 'center',
-        color: 'red',
+        color: 'white',
         strokecolor: 'black',
         x: gCanvas.width / 2,
         y: 50,

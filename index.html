@@ -22,7 +22,7 @@
                             <a onclick="openGallery()" href="#">Gallery</a>
                         </li>
                         <li>
-                            <a onclick="" href="#">Memes</a>
+                            <a onclick="openSavedMemesGall()" href="#">Memes</a>
                         </li>
                         <li>
                             <a href="#">About</a>
@@ -42,45 +42,45 @@
                     oninput="setLineTxt(this.value)">
                 <div class="buttons-row-1">
                     <button class="icon-btn" onclick="onAddLine()" data-name="Add Line">
-                        <img class="icon" src="/img/ICON/add.png"/>
+                        <img class="icon" src="img/ICON/add.png"/>
                     </button>
                     <button class="icon-btn" onclick="deleteLine()" data-name="Delete Line">
-                        <img class="icon" src="/img/ICON/bin.png">
+                        <img class="icon" src="img/ICON/bin.png">
                     </button>
                     <button class="icon-btn" onclick="moveLinebyBtns(-5)" data-name="Move Up">
-                        <img class="icon" src="/img/ICON/up.png">
+                        <img class="icon" src="img/ICON/up.png">
                     </button>
                     <button class="icon-btn" onclick="moveLinebyBtns(5)" data-name="Move Down">
-                        <img class="icon" src="/img/ICON/down.png">
+                        <img class="icon" src="img/ICON/down.png">
                     </button>
                     <button class="icon-btn" onclick="onSwitchLine()" data-name="Switch Line">
-                        <img class="icon" src="/img/ICON/up-and-down-opposite-double-arrows-side-by-side.png">
+                        <img class="icon" src="img/ICON/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
                 </div>
                 <div class="buttons-row-2-container">
                 <div class="buttons-row-2 flex" >
                     <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
-                    <img class="icon" src="/img/ICON/paint-board-and-brush.png" alt="" />
+                    <img class="icon" src="img/ICON/paint-board-and-brush.png" alt="" />
                 </button>
                 <input class="color-input" type="color" oninput="changeColor()" hidden>
                 <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
-                    <img class="icon" src="/img/ICON/text stroke.png" alt="" />
+                    <img class="icon" src="img/ICON/text stroke.png" alt="" />
                 </button>
                 <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
                     <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
-                    <img class="icon" src="/img/ICON/align-to-left.png" alt="" />
+                    <img class="icon" src="img/ICON/align-to-left.png" alt="" />
                 </button>
                     <button class="icon-btn" onclick="setAlign('center')" data-name="Align Center">
-                    <img class="icon" src="/img/ICON/center-text-alignment.png" alt="" />
+                    <img class="icon" src="img/ICON/center-text-alignment.png" alt="" />
                 </button>
                     <button class="icon-btn" onclick="setAlign('end')" data-name="Align End">
-                    <img class="icon" src="/img/ICON/align-to-right.png" alt="" />
+                    <img class="icon" src="img/ICON/align-to-right.png" alt="" />
                 </button>
                     <button class="icon-btn" onclick="onChangeFontSize(2)" data-name="Align Right">
-                    <img class="icon" src="/img/ICON/increase font-icon.png" alt="" />
+                    <img class="icon" src="img/ICON/increase font-icon.png" alt="" />
                 </button>
                     <button class="icon-btn" onclick="onChangeFontSize(-2)" data-name="Align Right">
-                    <img class="icon" src="/img/ICON/decrease font-icon.png" alt="" />
+                    <img class="icon" src="img/ICON/decrease font-icon.png" alt="" />
                 </button>
             </div>
         </div>
@@ -105,7 +105,10 @@
         </div>
 
 
-        <div class="saved-memes-gallery">
+        <div class="saved-memes-gallery gallery flex align-center">
+            <div class="saved-container">
+
+            </div>
 
         </div>
 

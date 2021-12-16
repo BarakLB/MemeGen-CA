@@ -139,6 +139,11 @@ background: linear-gradient(180deg, rgba(0,255,46,1) 0%, rgba(134,251,69,1) 50%,
   border-radius: 15px;
 }
 
+.gallery-saved-img {
+  border-radius: 20px;
+  flex-wrap: wrap;
+}
+
 /* HELPERS */
 .clean-list {
   list-style-type: none;
