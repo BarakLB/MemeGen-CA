@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sprint 2 by Barak</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <section class="header-wrapper">
+            <div class="flex align-center justify-between">
+                <div class="logo">
+                    <img class="logo-img" src="img/LOGO/LOGO.png" alt="" onclick="openGallery()"/>
+                </div>
+                <nav class="main-nav">
+                    <ul class="clean-list flex">
+                        <li>
+                            <a onclick="openGallery()" href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a onclick="" href="#">Memes</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <button class="btn-menu hide" onclick="OpenMenu()">☰</button>
+                    </ul>
+                </nav>
+            </div>
+    </header>
+    <main>
+        <section class="editor-container flex justify-center hide">
+            <div class="canvas-container">
+                <canvas class="canvas"></canvas>
+            </div>
+            <div class="editor flex align-center">
+                <input class="text-line" type="text" placeholder="I Love Falafel"
+                    oninput="setLineTxt(this.value)">
+                <div class="buttons-row-1">
+                    <button class="icon-btn" onclick="onAddLine()" data-name="Add Line">
+                        <img class="icon" src="/img/ICON/add.png"/>
+                    </button>
+                    <button class="icon-btn" onclick="deleteLine()" data-name="Delete Line">
+                        <img class="icon" src="/img/ICON/bin.png">
+                    </button>
+                    <button class="icon-btn" onclick="moveLinebyBtns(-5)" data-name="Move Up">
+                        <img class="icon" src="/img/ICON/up.png">
+                    </button>
+                    <button class="icon-btn" onclick="moveLinebyBtns(5)" data-name="Move Down">
+                        <img class="icon" src="/img/ICON/down.png">
+                    </button>
+                    <button class="icon-btn" onclick="onSwitchLine()" data-name="Switch Line">
+                        <img class="icon" src="/img/ICON/up-and-down-opposite-double-arrows-side-by-side.png">
+                    </button>
+                </div>
+                <div class="buttons-row-2-container">
+                <div class="buttons-row-2 flex" >
+                    <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
+                    <img class="icon" src="/img/ICON/paint-board-and-brush.png" alt="" />
+                </button>
+                <input class="color-input" type="color" oninput="changeColor()" hidden>
+                <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
+                    <img class="icon" src="/img/ICON/text stroke.png" alt="" />
+                </button>
+                <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
+                    <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
+                    <img class="icon" src="/img/ICON/align-to-left.png" alt="" />
+                </button>
+                    <button class="icon-btn" onclick="setAlign('center')" data-name="Align Center">
+                    <img class="icon" src="/img/ICON/center-text-alignment.png" alt="" />
+                </button>
+                    <button class="icon-btn" onclick="setAlign('end')" data-name="Align End">
+                    <img class="icon" src="/img/ICON/align-to-right.png" alt="" />
+                </button>
+                    <button class="icon-btn" onclick="onChangeFontSize(2)" data-name="Align Right">
+                    <img class="icon" src="/img/ICON/increase font-icon.png" alt="" />
+                </button>
+                    <button class="icon-btn" onclick="onChangeFontSize(-2)" data-name="Align Right">
+                    <img class="icon" src="/img/ICON/decrease font-icon.png" alt="" />
+                </button>
+            </div>
+        </div>
+                <div class="buttons-row-4 flex justify-center">
+                    <button class="save-btn" onclick="onSaveMeme()" data-name="Save Meme">
+                        Save Meme
+                    </button>
+                    <button class="download-btn"  data-name="Download Meme">
+                       <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
+                    </button>
+                </div>
+                    
+            </div>
+        </section>
+
+
+        <div class="gallery flex align-center">
+            <div class="search-img">
+                <datalist for="filter">Search</datalist>
+            </div>
+            <div class="imgs-container"></div>
+        </div>
+
+
+        <div class="saved-memes-gallery">
+
+        </div>
+
+
+
+    </main>
+   
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/galley.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+</body>
+
+</html>
