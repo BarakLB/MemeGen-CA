@@ -28,22 +28,26 @@ function updateMeme(elImg) {
             y: 90 - gSize,
           },
           height: 65,
-          width: gCanvas.width - 40,
+          width: gCanvas.width,
         },
         isSticker: false,
+        isDrag:false,
       },
     ],
   };
 }
 
 function addLineinMeme(isEmpty) {
-  if (isEmpty) gLineId = 0;
+  if (isEmpty) {
+    gLineId = 0;
+    console.log('here')
+  }
   var gCanvas = getgCanvas();
   var yPos = (gMeme.lines.length === 1) ? gCanvas.height - 120 : gCanvas.height / 2;
   console.log('gMeme.lines.length:', gMeme.lines.length);
   console.log('gCanvas.height - 40:', gCanvas.height - 120);
   // console.log('gCanvas.height / 2:', gCanvas.height / 2);
-  
+
   if (gMeme.lines.length === 0) yPos = 90;
   console.log('yPos:', yPos);
 
@@ -59,35 +63,32 @@ function addLineinMeme(isEmpty) {
     rectSize: {
       pos: { x: 0, y: yPos - gSize - 10 },
       height: 65,
-      width: gCanvas.width - 40,
+      width: gCanvas.width,
     },
     isSticker: false,
+    stickerSize: 80,
+    isDrag:false,
   });
   if (!isEmpty) gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
 
-function addStickerToMeme(elSticker){
+function addStickerToMeme(elSticker) {
   var canvas = getgCanvas()
   var meme = getgMeme()
-  meme.lines.push({
-    id: gIdLine++,
-    text: '',
-    isSticker: true,
-    img: elSticker,
-    x: canvas.width / 3,
-    y: canvas.height / 3,
-    sizeW: 100,
-    sizeH: 100,
-    size: 100,
-    rectSize: {
-        pos: { x: canvas.width / 3, y: canvas.height / 3 },
-        height: 107,
-        width: elSticker.width + 40
-    },
-  })
-  var len = meme.lines.length - 1;
-  meme.selectedLineIdx = meme.lines[len].id
+  addLineinMeme(false)
+  var idx = getCurrLine()
+  meme.lines[idx].isSticker = true
+  meme.lines[idx]['img'] = elSticker
+  meme.lines[idx].x = (canvas.width - 80) / 2
+  meme.lines[idx].y = (canvas.width -80)/ 2
+  meme.lines[idx].rectSize.height =  meme.lines[idx].stickerSize
+  meme.lines[idx].rectSize.width =  meme.lines[idx].stickerSize
+
+  meme.lines[idx].rectSize.pos.y =  meme.lines[idx].y
+  meme.lines[idx].rectSize.pos.x =  meme.lines[idx].x
+
+
 }
 
 //UPDATE MEME
@@ -121,6 +122,25 @@ function changeFontSize(delta) {
   var idx = getCurrLine()
   meme.lines[idx].size += delta;
   meme.lines[idx].rectSize.height += delta
+
+
+  if(meme.lines[idx].isSticker) {
+    meme.lines[idx].stickerSize += delta
+    meme.lines[idx].rectSize.width += delta
+
+  }else {
+    if (delta > 0) {
+      meme.lines[idx].rectSize.pos.y -= delta
+    } else {
+      meme.lines[idx].rectSize.pos.y -= delta
+    }
+
+  }
+
+
+
+  
+  
 }
 
 function updateSelectedLine(meme) {
@@ -142,6 +162,12 @@ function setgSize() {
   if (canvas.width > 300) gSize = 35;
   else gSize = 30;
 
+}
+
+function setisDrag(isDrag){
+  var meme = getgMeme()
+  var idx = getCurrLine()
+  meme.lines[idx].isDrag = isDrag
 }
 
 // GET
