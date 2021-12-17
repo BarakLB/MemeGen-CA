@@ -10,39 +10,38 @@
 </head>
 
 <body onload="init()">
-    <header>
-        <section class="header-wrapper">
-            <div class="flex align-center justify-between">
-                <div class="logo">
-                    <img class="logo-img" src="img/LOGO/LOGO.png" alt="" onclick="openGallery()"/>
-                </div>
-                <nav class="main-nav">
-                    <ul class="clean-list flex">
-                        <li>
-                            <a onclick="openGallery()" href="#">Gallery</a>
-                        </li>
-                        <li>
-                            <a onclick="openSavedMemesGall()" href="#">Memes</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <button class="btn-menu hide" onclick="OpenMenu()">☰</button>
-                    </ul>
-                </nav>
-            </div>
+
+    <div class="main-screen" onclick="openMenu()"></div>
+
+    <header class="main-header flex justify-between align-center">
+        <div class="logo">
+            <img class="logo-img" src="img/LOGO/LOGO.png" alt="" onclick="openGallery()" />
+        </div>
+        <nav class="main-nav">
+            <ul class="clean-list flex">
+                <li onclick="openGallery()">
+                    <a href="#">Gallery</a>
+                </li>
+                <li onclick="openSavedMemesGall()">
+                    <a href="#">Memes</a>
+                </li>
+                <li onclick="openAboutMe()">
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="btn-menu " onclick="openMenu()">☰</button>
     </header>
-    <main>
-        <section class="editor-container flex justify-center hide">
+    <main class="main-layout">
+        <section class="editor-container flex justify-center hide main-layout">
             <div class="canvas-container">
                 <canvas class="canvas"></canvas>
             </div>
             <div class="editor flex align-center">
-                <input class="text-line" type="text" placeholder="Add Text Here"
-                    oninput="setLineTxt(this.value)">
+                <input class="text-line" type="text" placeholder="Add Text Here" oninput="setLineTxt(this.value)">
                 <div class="buttons-row-1">
                     <button class="icon-btn" onclick="onAddLine()" data-name="Add Line">
-                        <img class="icon" src="img/ICON/add.png"/>
+                        <img class="icon" src="img/ICON/add.png" />
                     </button>
                     <button class="icon-btn" onclick="deleteLine()" data-name="Delete Line">
                         <img class="icon" src="img/ICON/bin.png">
@@ -58,70 +57,94 @@
                     </button>
                 </div>
                 <div class="buttons-row-2-container">
-                <div class="buttons-row-2 flex" >
-                    <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
-                    <img class="icon" src="img/ICON/paint-board-and-brush.png" alt="" />
-                </button>
-                <input class="color-input" type="color" oninput="changeColor()" hidden>
-                <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
-                    <img class="icon" src="img/ICON/text stroke.png" alt="" />
-                </button>
-                <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
-                    <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
-                    <img class="icon" src="img/ICON/align-to-left.png" alt="" />
-                </button>
-                    <button class="icon-btn" onclick="setAlign('center')" data-name="Align Center">
-                    <img class="icon" src="img/ICON/center-text-alignment.png" alt="" />
-                </button>
-                    <button class="icon-btn" onclick="setAlign('end')" data-name="Align End">
-                    <img class="icon" src="img/ICON/align-to-right.png" alt="" />
-                </button>
-                    <button class="icon-btn" onclick="onChangeFontSize(2)" data-name="Align Right">
-                    <img class="icon" src="img/ICON/increase font-icon.png" alt="" />
-                </button>
-                    <button class="icon-btn" onclick="onChangeFontSize(-2)" data-name="Align Right">
-                    <img class="icon" src="img/ICON/decrease font-icon.png" alt="" />
-                </button>
-            </div>
-        </div>
-            <div class="stickers">
-                <img class="sticker" src="img/STICKERS/lonely.png" onclick="selectSticker(this)" alt="">
-                <img class="sticker" src="img/STICKERS/patrick.png" onclick="selectSticker(this)" alt="">
-                <img class="sticker" src="img/STICKERS/pikachu.png" onclick="selectSticker(this)" alt="">
-                <img class="sticker" src="img/STICKERS/turtle.png" onclick="selectSticker(this)" alt="">
-            </div>
+                    <div class="buttons-row-2 flex">
+                        <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
+                            <img class="icon" src="img/ICON/paint-board-and-brush.png" alt="" />
+                        </button>
+                        <input class="color-input" type="color" oninput="changeColor()" hidden>
+                        <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
+                            <img class="icon" src="img/ICON/text stroke.png" alt="" />
+                        </button>
+                        <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
+                        <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
+                            <img class="icon" src="img/ICON/align-to-left.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="setAlign('center')" data-name="Align Center">
+                            <img class="icon" src="img/ICON/center-text-alignment.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="setAlign('end')" data-name="Align End">
+                            <img class="icon" src="img/ICON/align-to-right.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="onChangeFontSize(2)" data-name="Align Right">
+                            <img class="icon" src="img/ICON/increase font-icon.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="onChangeFontSize(-2)" data-name="Align Right">
+                            <img class="icon" src="img/ICON/decrease font-icon.png" alt="" />
+                        </button>
+                    </div>
+                </div>
+                <div class="stickers">
+                    <img class="sticker" src="img/STICKERS/lonely.png" onclick="selectSticker(this)" alt="">
+                    <img class="sticker" src="img/STICKERS/patrick.png" onclick="selectSticker(this)" alt="">
+                    <img class="sticker" src="img/STICKERS/pikachu.png" onclick="selectSticker(this)" alt="">
+                    <img class="sticker" src="img/STICKERS/turtle.png" onclick="selectSticker(this)" alt="">
+                </div>
                 <div class="buttons-row-4 flex">
                     <button class="save-btn" onclick="onSaveMeme()" data-name="Save Meme">
                         Save Meme
                     </button>
-                    <button class="download-btn"  data-name="Download Meme">
-                       <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
+                    <button class="download-btn" data-name="Download Meme">
+                        <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
                     </button>
                 </div>
-                    
+
             </div>
         </section>
 
 
-        <div class="gallery flex align-center">
+        <section class="gallery flex align-center justify-center">
             <div class="search-img">
                 <datalist for="filter">Search</datalist>
             </div>
             <div class="imgs-container"></div>
-        </div>
+        </section>
 
 
-        <div class="saved-memes-gallery gallery flex align-center">
+        <section class="saved-memes-gallery gallery flex align-center justify-center">
             <div class="saved-container hide">
 
             </div>
 
-        </div>
+        </section>
 
 
+        <section class="about-me flex align-center hide">
+            <img class="my-img " src="img/ME.JPG" />
+            <div class="about-me-txt">
+                <h1>Welcome to my implentation of MemeGenerator</h1>
+                <h3>Some words about me</h3>
+                <p>Hi, my name is Barak Lebowitz. I'm 25 years old and lives in a moshav called Tel Adashim. At this
+                    moment im a student in a Coding Academy bootcamp and this is my second big project and I hope I did
+                    well
+                </p>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut suscipit sit minima, consequuntur
+                    deleniti fugit quas, adipisci pariatur similique saepe, quasi architecto illum ratione corporis
+                    debitis modi recusandae vitae dolores.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus magnam, officia, dolorem
+                    dolores debitis ipsam odit blanditiis delectus cum, inventore voluptatibus quo veniam! Adipisci a id
+                    ea soluta iure.
 
+                </p>
+
+            </div>
+        </section>
     </main>
-   
+
+        <footer>
+            <p>© Barak Lebowitz 2021</p>
+        </footer>
+
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/galley.service.js"></script>
     <script src="js/services/meme.service.js"></script>

@@ -26,7 +26,6 @@ function onImgSelect(elImg) {
   } else updateMemeImg(elImg);
   gMeme.lines.forEach((line, idx) =>{
      writeText(idx, true)
-    //  if(idx === gMeme.selectedLineIdx) drawRect(line)
     });
 }
 
@@ -48,11 +47,12 @@ function writeText(lineIdx, isSavedtxt = false) {
   var meme = getgMeme();
   var currLine = meme.lines[lineIdx];
   if (!isSavedtxt) {
-    renderMeme()
-    drawRect(meme)
+    // renderMeme()
+    drawRect(currLine)
   }
   gCtx.lineWidth = currLine.size / 10 - 1;
   gCtx.textAlign = currLine.align;
+  gCtx.textBaseling = "middle"
   gCtx.fillStyle = currLine.color;
   gCtx.font = `${currLine.size}px Impact`;
   gCtx.strokeStyle = currLine.strokecolor;
@@ -66,7 +66,6 @@ function drawRect(selectedLine) {
   var y = selectedLine.rectSize.pos.y;
   var width = gCanvas.width;
   var height = selectedLine.rectSize.height;
-  console.log(height);
 
   gCtx.beginPath();
   gCtx.rect(x, y, width, height);
@@ -84,7 +83,6 @@ function onDownloadMeme(elLink) {
   var memeURL = canvas.toDataURL();
   elLink.href = memeURL;
   elLink.download = `meme-#${gSavedMemes}`;
-  console.log('memeURL:', memeURL);
 }
 
 function onSaveMeme() {
@@ -93,12 +91,9 @@ function onSaveMeme() {
     saveToStorage('SavedNum', 1);
     gSavedMemes = 1;
   } else gSavedMemes++;
-
   renderMeme();
-  
   var canvas = getgCanvas();
   var url = canvas.toDataURL();
-
   saveToStorage(`meme-#${gSavedMemes}`, { gMeme, url });
   saveToStorage('SavedNum', gSavedMemes);
 }
@@ -107,6 +102,9 @@ function onAddLine() {
   document.querySelector('.text-line').value = '';
   document.querySelector('.text-line').focus();
   addLineinMeme(false);
+  var idx = getCurrLine()
+  renderMeme()
+  drawRect(gMeme.lines[idx])
 }
 
 function onSwitchLine() {
@@ -188,12 +186,10 @@ function onChangeFontSize(delta) {
 }
 
 function openEditor() {
-  var elContain = document.querySelector('.editor-container');
-  elContain.classList.remove('hide');
-  elContain = document.querySelector('.saved-container');
-  elContain.classList.add('hide');
-  elContain = document.querySelector('.imgs-container');
-  elContain.classList.add('hide');
+  document.querySelector('.saved-container').classList.add('hide');
+  document.querySelector('.imgs-container').classList.add('hide');
+  document.querySelector('.about-me').classList.add('hide');
+  document.querySelector('.editor-container').classList.remove('hide');
 }
 
 function getgCanvas() {

@@ -6,17 +6,15 @@ function renderImgs(imgs = getgImgs()) {
   imgs.forEach((img, idx) => {
     strHTML += `<img class="gallery-img" data-id="${idx}" src="${img.url}" alt="" onclick="onImgSelect(this)">`;
   });
-  var elImgs = (document.querySelector('.imgs-container').innerHTML = strHTML);
+  document.querySelector('.imgs-container').innerHTML = strHTML;
 }
 
 
 function openGallery() {
-  var elContain = document.querySelector('.editor-container');
-  elContain.classList.add('hide');
-  var elContain = document.querySelector('.saved-container');
-  elContain.classList.add('hide');
-  elContain = document.querySelector('.imgs-container');
-  elContain.classList.remove('hide');
+  document.querySelector('.editor-container').classList.add('hide');
+  document.querySelector('.saved-container').classList.add('hide');
+  document.querySelector('.about-me').classList.add('hide');
+  document.querySelector('.imgs-container').classList.remove('hide');
   gLineId = 0;
   gMeme = null;
   document.querySelector('.text-line').value = '';
@@ -39,13 +37,23 @@ function renderSavedMemes() {
 
 
 function openSavedMemesGall() {
-  var elContain = document.querySelector('.editor-container');
-  elContain.classList.add('hide');
-  elContain = document.querySelector('.imgs-container');
-  elContain.classList.add('hide');
-  var elContain = document.querySelector('.saved-container');
-  elContain.classList.remove('hide');
+  document.querySelector('.editor-container').classList.add('hide');;
+  document.querySelector('.imgs-container').classList.add('hide');
+  document.querySelector('.about-me').classList.add('hide');
+  document.querySelector('.saved-container').classList.remove('hide');
   renderSavedMemes();
   gMeme = null;
-  gLineId=0;
+  gLineId = 0;
+}
+
+//ABOUT ME 
+function openAboutMe() {
+  document.querySelector('.editor-container').classList.add('hide');
+  document.querySelector('.imgs-container').classList.add('hide');
+  document.querySelector('.saved-container').classList.add('hide');
+  document.querySelector('.about-me').classList.remove('hide');
+}
+
+function openMenu() {
+  document.body.classList.toggle('menu-open');
 }

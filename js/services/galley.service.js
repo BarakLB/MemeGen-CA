@@ -25,7 +25,7 @@ function createImages() {
 }
 
 function _createImg(keywords) {
-  return { id: gImgId++, url: `img/square/${gImgId}.jpg`, keywords };
+  return { id: gImgId++, url: `img/SQUARE/${gImgId}.jpg`, keywords };
 }
 
 function getgImgs() {

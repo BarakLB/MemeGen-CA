@@ -21,11 +21,11 @@ function updateMeme(elImg) {
         color: 'white',
         strokecolor: 'black',
         x: gCanvas.width / 2,
-        y: 50,
+        y: 100,
         rectSize: {
           pos: {
             x: 0,
-            y: 50 - gSize,
+            y: 90 - gSize,
           },
           height: 65,
           width: gCanvas.width - 40,
@@ -39,8 +39,12 @@ function updateMeme(elImg) {
 function addLineinMeme(isEmpty) {
   if (isEmpty) gLineId = 0;
   var gCanvas = getgCanvas();
-  var yPos = (gMeme.lines.length === 1) ? gCanvas.height - 20 : gCanvas.height / 2;
-  if (gMeme.lines.length === 0) yPos = 50;
+  var yPos = (gMeme.lines.length === 1) ? gCanvas.height - 120 : gCanvas.height / 2;
+  console.log('gMeme.lines.length:', gMeme.lines.length);
+  console.log('gCanvas.height - 40:', gCanvas.height - 120);
+  // console.log('gCanvas.height / 2:', gCanvas.height / 2);
+  
+  if (gMeme.lines.length === 0) yPos = 90;
   console.log('yPos:', yPos);
 
   gMeme.lines.push({
@@ -53,7 +57,7 @@ function addLineinMeme(isEmpty) {
     x: gCanvas.width / 2,
     y: yPos,
     rectSize: {
-      pos: { x: 0, y: yPos - gSize },
+      pos: { x: 0, y: yPos - gSize - 10 },
       height: 65,
       width: gCanvas.width - 40,
     },
