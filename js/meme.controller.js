@@ -2,6 +2,7 @@
 var gCanvas;
 var gCtx;
 var gSavedMemes;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
 function init() {
   createImages();
@@ -10,11 +11,9 @@ function init() {
   gCtx = gCanvas.getContext('2d');
   resizeCanvas();
   renderSavedMemes();
+  renderOptions();
+  renderSearchBar();  
 }
-
-
-
-
 
 function onImgSelect(elImg) {
   openEditor();

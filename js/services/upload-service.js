@@ -1,4 +1,4 @@
-
+//FACEBOOK UPLOAD
 function uploadImg() {
     var gElCanvas = document.querySelector('.canvas')
     const imgDataUrl = gElCanvas.toDataURL("image/jpeg");

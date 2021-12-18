@@ -65,8 +65,12 @@ function openMenu() {
   document.body.classList.toggle('menu-open');
 }
 
-
+//FILTER
 function onFilter(value) {
+  gMap[value]++
+  renderSearchBar(gMap)
+  
+
   var imgs = getgImgs()
   var filtered = []
   if (value === 'ALL') {
@@ -74,13 +78,10 @@ function onFilter(value) {
     return;
   }
   imgs.filter((img) => {
-    console.log('img.keywords:', img.keywords);
     if (img.keywords.includes(value)) {
       filtered.push(img)
     }
-
   })
-  // console.log('filtered:', filtered);
+  
   renderImgs(filtered)
-  renderSavedMemes()
 }
