@@ -109,18 +109,10 @@ function updateMemeImg(elImg) {
 
 //ADD
 function addLineinMeme(isEmpty) {
-  if (isEmpty) {
-    gLineId = 0;
-    console.log('here')
-  }
+  if (isEmpty) gLineId = 0;
   var gCanvas = getgCanvas();
   var yPos = (gMeme.lines.length === 1) ? gCanvas.height - 120 : gCanvas.height / 2;
-  console.log('gMeme.lines.length:', gMeme.lines.length);
-  console.log('gCanvas.height - 40:', gCanvas.height - 120);
-  // console.log('gCanvas.height / 2:', gCanvas.height / 2);
-
   if (gMeme.lines.length === 0) yPos = 90;
-  console.log('yPos:', yPos);
 
   gMeme.lines.push({
     id: gLineId++,

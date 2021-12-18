@@ -37,16 +37,12 @@ function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container');
   gCanvas.width = elContainer.offsetWidth;
   gCanvas.height = elContainer.offsetWidth;
-  console.log('gCanvas.width:', gCanvas.width);
-  
   renderMeme();
 }
 
 function renderMeme() {
   gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
   var meme = getgMeme();
-  // console.log('meme.elImg:', meme.elImg);
-  
   if (meme) onImgSelect(meme.elImg);
 }
 
