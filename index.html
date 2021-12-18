@@ -33,7 +33,7 @@
         <button class="btn-menu " onclick="openMenu()">☰</button>
     </header>
     <main class="main-layout">
-        <section class="editor-container flex justify-center hide main-layout">
+        <section class="editor-container flex justify-center hide ">
             <div class="canvas-container">
                 <canvas class="canvas"></canvas>
             </div>
@@ -81,6 +81,11 @@
                         <button class="icon-btn" onclick="onChangeFontSize(-2)" data-name="Decrease Font">
                             <img class="icon" src="img/ICON/decrease font-icon.png" alt="" />
                         </button>
+                        <select class="font-select" onchange="onSetFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Cambria">Cambria</option>
+                        </select>
                     </div>
                 </div>
                 <div class="stickers">
@@ -96,23 +101,35 @@
                     <button class="download-btn" data-name="Download Meme">
                         <a href="#" onclick="onDownloadMeme(this)">Download Meme</a>
                     </button>
+                    
                 </div>
-
+                
+                <div class="share-container" onclick="uploadImg()">
+                    <img class="icon facebook" src="img/ICON/facebook-logo.png" alt=""/>
+                </div>
             </div>
         </section>
 
-
-        <section class="gallery flex align-center justify-center">
-            <div class="search-img">
-                <datalist for="filter">Search</datalist>
+        <section class="main-gallery gallery flex align-center justify-center">
+            <!-- <div class="flex">  -->
+            <div class="search-img flex">
+                <label for="filterChoice">Filter By...</label>
+                <input list="keys" class="filter-choice" onchange="onFilter(this.value)">
+                <datalist id="keys">
+                </datalist>
+                <div class="upload-img">
+                    <button class="btn-gallery upload" onclick="addImgToGallery(this)" data-trans="upload">Upload</button>
+                    <input type='file' id="getFile" class="hide" onchange="onImgInput(event)">
+                </div>
             </div>
+        <!-- </div> -->
             <div class="imgs-container"></div>
         </section>
 
 
         <section class="saved-memes-gallery gallery flex align-center justify-center">
             <div class="saved-container hide">
-
+                
             </div>
 
         </section>
@@ -141,11 +158,12 @@
         </section>
     </main>
 
-        <footer>
-            <p>© Barak Lebowitz 2021</p>
-        </footer>
+    <footer>
+        <p>© Barak Lebowitz 2021</p>
+    </footer>
 
     <script src="js/services/storage.service.js"></script>
+    <script src="js/services/upload-service.js"></script>
     <script src="js/services/galley.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>

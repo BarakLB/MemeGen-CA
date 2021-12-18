@@ -17,6 +17,7 @@ function updateMeme(elImg) {
         id: gLineId,
         txt: 'Add Text Here',
         size: gSize,
+        font: 'Impact',
         align: 'center',
         color: 'white',
         strokecolor: 'black',
@@ -31,7 +32,7 @@ function updateMeme(elImg) {
           width: gCanvas.width,
         },
         isSticker: false,
-        isDrag:false,
+        isDrag: false,
       },
     ],
   };
@@ -55,6 +56,7 @@ function addLineinMeme(isEmpty) {
     id: gLineId++,
     txt: '',
     size: gSize,
+    font: 'Impact',
     align: 'center',
     color: 'white',
     strokecolor: 'black',
@@ -67,7 +69,7 @@ function addLineinMeme(isEmpty) {
     },
     isSticker: false,
     stickerSize: 80,
-    isDrag:false,
+    isDrag: false,
   });
   if (!isEmpty) gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
@@ -81,12 +83,12 @@ function addStickerToMeme(elSticker) {
   meme.lines[idx].isSticker = true
   meme.lines[idx]['img'] = elSticker
   meme.lines[idx].x = (canvas.width - 80) / 2
-  meme.lines[idx].y = (canvas.width -80)/ 2
-  meme.lines[idx].rectSize.height =  meme.lines[idx].stickerSize
-  meme.lines[idx].rectSize.width =  meme.lines[idx].stickerSize
+  meme.lines[idx].y = (canvas.width - 80) / 2
+  meme.lines[idx].rectSize.height = meme.lines[idx].stickerSize
+  meme.lines[idx].rectSize.width = meme.lines[idx].stickerSize
 
-  meme.lines[idx].rectSize.pos.y =  meme.lines[idx].y
-  meme.lines[idx].rectSize.pos.x =  meme.lines[idx].x
+  meme.lines[idx].rectSize.pos.y = meme.lines[idx].y
+  meme.lines[idx].rectSize.pos.x = meme.lines[idx].x
 
 
 }
@@ -124,23 +126,17 @@ function changeFontSize(delta) {
   meme.lines[idx].rectSize.height += delta
 
 
-  if(meme.lines[idx].isSticker) {
+  if (meme.lines[idx].isSticker) {
     meme.lines[idx].stickerSize += delta
     meme.lines[idx].rectSize.width += delta
 
-  }else {
+  } else {
     if (delta > 0) {
       meme.lines[idx].rectSize.pos.y -= delta
     } else {
       meme.lines[idx].rectSize.pos.y -= delta
     }
-
   }
-
-
-
-  
-  
 }
 
 function updateSelectedLine(meme) {
@@ -164,11 +160,20 @@ function setgSize() {
 
 }
 
-function setisDrag(isDrag){
+function setisDrag(isDrag) {
   var meme = getgMeme()
   var idx = getCurrLine()
   meme.lines[idx].isDrag = isDrag
 }
+
+function setFont(font) {
+  var meme = getgMeme()
+  var idx = getCurrLine()
+  meme.lines[idx].font = font
+// renderMeme()
+}
+
+
 
 // GET
 function getgMeme() {

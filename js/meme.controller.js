@@ -14,21 +14,6 @@ function init() {
 
 
 
-function getEvPos(ev) {
-  var pos = {
-      x: ev.offsetX,
-      y: ev.offsetY
-  }
-  if (gTouchEvs.includes(ev.type)) {
-      ev.preventDefault()
-      ev = ev.changedTouches[0]
-      pos = {
-          x: ev.pageX - ev.target.offsetLeft,
-          y: ev.pageY - ev.target.offsetTop
-      }
-  }
-  return pos
-}
 
 
 function onImgSelect(elImg) {
@@ -44,7 +29,7 @@ function onImgSelect(elImg) {
     return;
   } else updateMemeImg(elImg);
   gMeme.lines.forEach((line, idx) => {
-    writeText(idx, true)
+    writeText(idx)
   });
 }
 
@@ -53,22 +38,22 @@ function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container');
   gCanvas.width = elContainer.offsetWidth;
   gCanvas.height = elContainer.offsetWidth;
+  console.log('gCanvas.width:', gCanvas.width);
+  
   renderMeme();
 }
 
 function renderMeme() {
   gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
   var meme = getgMeme();
+  // console.log('meme.elImg:', meme.elImg);
+  
   if (meme) onImgSelect(meme.elImg);
 }
 
-function writeText(lineIdx, isSavedtxt = false) {
+function writeText(lineIdx) {
   var meme = getgMeme();
   var currLine = meme.lines[lineIdx];
-  if (!isSavedtxt) {
-    renderMeme()
-    drawRect(currLine)
-  }
   if (currLine.isSticker) {
     var img = new Image();
     img.src = currLine.img.src;
@@ -78,14 +63,13 @@ function writeText(lineIdx, isSavedtxt = false) {
   gCtx.textAlign = currLine.align;
   gCtx.textBaseling = "middle"
   gCtx.fillStyle = currLine.color;
-  gCtx.font = `${currLine.size}px Impact`;
+  gCtx.font = `${currLine.size}px ${currLine.font}`;
   gCtx.strokeStyle = currLine.strokecolor;
   gCtx.fillText(currLine.txt, currLine.x, currLine.y);
   gCtx.strokeText(currLine.txt, currLine.x, currLine.y);
 }
 
 function drawRect(selectedLine) {
-  // console.log(selectedLine)
   var x = selectedLine.rectSize.pos.x;
   var y = selectedLine.rectSize.pos.y;
   var width = selectedLine.rectSize.width;
@@ -110,6 +94,11 @@ function selectSticker(elSticker) {
 }
 
 //BUTTONS FUNCS
+function onSetFont(font) {
+setFont(font)
+renderMeme();
+}
+
 function onDownloadMeme(elLink) {
   onSaveMeme();
   var canvas = getgCanvas();
@@ -233,6 +222,7 @@ function openEditor() {
   document.querySelector('.saved-container').classList.add('hide');
   document.querySelector('.imgs-container').classList.add('hide');
   document.querySelector('.about-me').classList.add('hide');
+  document.querySelector('.search-img').classList.add('hide');
   document.querySelector('.editor-container').classList.remove('hide');
 }
 
